@@ -278,6 +278,225 @@ class App extends Component {
                 }
             ],
         };
+
+        this.test = {
+            state: {
+                currentQuestion: 0
+            },
+            questions: [
+                {
+                    id: 1,
+                    text: "Сколько вам лет?",
+                    //image: 'https://pp.userapi.com/c850332/v850332190/62a16/avSgVpltUBw.jpg',
+                    answers: [
+                        {
+                            id: 1,
+                            text: '10-17'
+                        },
+                        {
+                            id: 2,
+                            text: '18-22'
+                        },
+                        {
+                            id: 3,
+                            text: '23-28'
+                        },
+                        {
+                            id: 4,
+                            text: 'Более 28'
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    text: "Если вы попадаете в новую страну, то в первую очередь...",
+                    //image: 'https://pp.userapi.com/c847123/v847123058/dbebd/HLmy45IxreE.jpg?ava=1',
+                    answers: [
+                        {
+                            id: 1,
+                            text: 'Пробую новые блюда'
+                        },
+                        {
+                            id: 2,
+                            text: 'Хожу на экскурсии'
+                        },
+                        {
+                            id: 3,
+                            text: 'Ищу на ярмарках особенные вещи'
+                        },
+                        {
+                            id: 4,
+                            text: 'Пытаюсь узнать о жизне населения'
+                        },
+                        {
+                            id: 5,
+                            text: 'Иду в места по советам из интернета'
+                        }
+                    ]
+                },
+                {
+                    id: 3,
+                    text: "Представьте, что вы можете пообщаться лично с любым человеком в мире и узнать секреты его успеха. Кого бы вы выбрали?",
+                    //image: 'https://pp.userapi.com/c847123/v847123058/dbebd/HLmy45IxreE.jpg?ava=1',
+                    answers: [
+                        {
+                            id: 1,
+                            text: 'Олимпийского чемпиона',
+                            who: 'olymp'
+                        },
+                        {
+                            id: 2,
+                            text: 'Художника с мировым именем',
+                            who: 'artist'
+                        },
+                        {
+                            id: 3,
+                            text: 'Создателя бизнес-империи',
+                            who: 'businessman'
+                        },
+                        {
+                            id: 4,
+                            text: 'Блоггера с миллионом подписчиков',
+                            who: 'blogger'
+                        },
+                        {
+                            id: 5,
+                            text: 'Шеф-повара, которого знает весь мир',
+                            who: 'chief'
+                        },
+                        {
+                            id: 6,
+                            text: 'Путешественника, который был во всех странах',
+                            who: 'traveler'
+                        }
+                    ]
+                },
+                {
+                    id: 4,
+                    text: "Какая фраза лучше всего вас характеризует?",
+                    //image: 'https://pp.userapi.com/c847123/v847123058/dbebd/HLmy45IxreE.jpg?ava=1',
+                    answers: [
+                        {
+                            id: 1,
+                            text: 'Я не люблю сидеть на одном месте'
+                        },
+                        {
+                            id: 2,
+                            text: 'У меня хорошо развита интуиция'
+                        },
+                        {
+                            id: 3,
+                            text: 'Моя сильная сторона — великолепная память'
+                        },
+                        {
+                            id: 4,
+                            text: 'У меня практически нет свободного времени'
+                        },
+                        {
+                            id: 5,
+                            text: 'У меня богатое воображение'
+                        },
+                        {
+                            id: 6,
+                            text: 'Я очень тщательно слежу за своим питанием'
+                        }
+                    ]
+                },
+                {
+                    id: 5,
+                    text: "Чем вам больше всего нравилось заниматься в детстве?",
+                    //image: 'https://pp.userapi.com/c847123/v847123058/dbebd/HLmy45IxreE.jpg?ava=1',
+                    answers: [
+                        {
+                            id: 1,
+                            text: 'Лепить, рисовать и делать гербарии'
+                        },
+                        {
+                            id: 2,
+                            text: 'Делать куличи в песочнице и помогать родителям на кухне'
+                        },
+                        {
+                            id: 3,
+                            text: 'Играть в «догонялки» и прыгать на батуте'
+                        },
+                        {
+                            id: 4,
+                            text: 'Читать книжки и придумывать собственные истории'
+                        },
+                        {
+                            id: 5,
+                            text: 'Придумывать новые игры и рассказывать правила своим друзьям'
+                        },
+                        {
+                            id: 6,
+                            text: 'Играть в видео-игры и смотреть телевизор'
+                        }
+                    ]
+                },
+                {
+                    id: 6,
+                    text: "Вы с друзьями организуете большую вечеринку. За что вам приятнее всего было бы отвечать на ней? ",
+                    //image: 'https://pp.userapi.com/c847123/v847123058/dbebd/HLmy45IxreE.jpg?ava=1',
+                    answers: [
+                        {
+                            id: 1,
+                            text: 'За праздничное оформление'
+                        },
+                        {
+                            id: 2,
+                            text: 'За меню'
+                        },
+                        {
+                            id: 3,
+                            text: 'За музыку и танцы'
+                        },
+                        {
+                            id: 4,
+                            text: 'За фото и видео праздника в социальных сетях'
+                        },
+                        {
+                            id: 5,
+                            text: 'За общение, игры и конкурсы'
+                        },
+                        {
+                            id: 6,
+                            text: 'За то, чтобы всё прошло по плану'
+                        }
+                    ]
+                },
+                {
+                    id: 7,
+                    text: "Работа вашей мечты?",
+                    //image: 'https://pp.userapi.com/c847123/v847123058/dbebd/HLmy45IxreE.jpg?ava=1',
+                    answers: [
+                        {
+                            id: 1,
+                            text: 'В крупной международной компании'
+                        },
+                        {
+                            id: 2,
+                            text: 'Со свободным графиком, без жёстких рамок'
+                        },
+                        {
+                            id: 3,
+                            text: 'Мечтаю открыть своё дело'
+                        },
+                        {
+                            id: 4,
+                            text: 'Главное условие — не сидеть в офисе или дома!'
+                        },
+                        {
+                            id: 5,
+                            text: 'Меня устраивает моё сегодняшнее место работы '
+                        },
+                        {
+                            id: 6,
+                            text: 'Бесплатные обеды и дружеская атмосфера в коллективе'
+                        }
+                    ]
+                }
+            ]
+        };
     }
 
     componentWillMount() {
@@ -291,9 +510,83 @@ class App extends Component {
         return (
             <UI.ConfigProvider insets={this.props.insets} isWebView={isWebView}>
                 <UI.Root activeView="mainView">
+                    <UI.Group title="Специально для вас">
+                        <UI.Gallery
+                            slideWidth="90%"
+                            style={{height: 150}}
+                            bullets="dark"
+                        >
+                            <div style={{height: 150, backgroundColor: UI.colors.white}}
+                                 onClick={() => this.setState({
+                                     activePanel: 'coursePanel',
+                                     courseTitle: 'Javascript'
+                                 })}
+                            >
+                                <img src="https://pp.userapi.com/c850332/v850332190/62a16/avSgVpltUBw.jpg"
+                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                            </div>
+                            <div style={{height: 150, backgroundColor: UI.colors.green}}
+                                 onClick={() => this.setState({
+                                     activePanel: 'coursePanel',
+                                     courseTitle: 'English'
+                                 })}
+                            >
+                                <img src="https://pp.userapi.com/c850332/v850332190/62a1e/OEmbbEsgAEc.jpg"
+                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                            </div>
+                            <div style={{height: 150, backgroundColor: UI.colors.blue_300}}
+                                 onClick={() => this.setState({
+                                     activePanel: 'coursePanel',
+                                     courseTitle: 'VK API'
+                                 })}
+                            >
+                                <img src="https://pp.userapi.com/c850332/v850332190/62a26/CUDmKJ15G7U.jpg"
+                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                            </div>
+                        </UI.Gallery>
+                    </UI.Group>
+
                     <UI.View id="mainView" activePanel={activePanel}>
                         <MainPanel id="mainPanel" accessToken={this.props.accessToken}/>
                         <AboutPanel id="aboutPanel"/>
+
+                        <UI.Panel id="panel3">
+                            <UI.PanelHeader
+                                left={<UI.HeaderButton
+                                    onClick={() => this.setState({activePanel: 'coursesPanel'})}>{osname === UI.IOS ?
+                                    <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                                addon={<UI.HeaderButton
+                                    onClick={() => this.setState({activePanel: 'coursesPanel'})}>Назад</UI.HeaderButton>}
+                                right={[
+                                    <UI.HeaderButton key="add" onClick={() => {
+                                    }}><Icon24Add/></UI.HeaderButton>,
+                                    <UI.HeaderButton key="more" onClick={() => {
+                                    }}><Icon24MoreVertical/></UI.HeaderButton>
+                                ]}
+                            >
+                                Две иконки
+                            </UI.PanelHeader>
+                            <UI.Group>
+                                <UI.CellButton onClick={() => this.setState({activeView: 'modal'})}>
+                                    Модальное окно
+                                </UI.CellButton>
+                            </UI.Group>
+                        </UI.Panel>
+                    </UI.View>
+
+                    <UI.View id="modal" header activePanel="modal-panel">
+                        <UI.Panel id="modal-panel">
+                            <UI.PanelHeader
+                                left={<UI.HeaderButton
+                                    onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Отмена' :
+                                    <Icon24Cancel/>}</UI.HeaderButton>}
+                                right={<UI.HeaderButton disabled primary
+                                                        onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Готово' :
+                                    <Icon24Done/>}</UI.HeaderButton>}
+                            >
+                                Модальное окно
+                            </UI.PanelHeader>
+                        </UI.Panel>
                     </UI.View>
                 </UI.Root>
             </UI.ConfigProvider>
