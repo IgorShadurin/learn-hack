@@ -209,6 +209,75 @@ class App extends Component {
                 ]
             }
         };
+
+        this.celebrities = {
+            blogger: {
+                title: 'Николай Соболев',
+                photo: 'https://pp.userapi.com/c845419/v845419088/12f6ff/RJQBUQ3n--w.jpg',
+                description: ''
+            },
+            traveler: {
+                title: 'Беар Гриллс',
+                photo: 'https://pp.userapi.com/c845419/v845419088/12f707/3cAoY6-k5WM.jpg',
+                description: ''
+            },
+            olymp: {
+                title: 'Хабиб Нурмагомедов',
+                photo: 'https://pp.userapi.com/c845419/v845419088/12f716/ij8ybNQ9Sn4.jpg',
+                description: ''
+            },
+            artist: {
+                title: 'Бэнкси',
+                photo: 'https://pp.userapi.com/c845419/v845419088/12f74a/X_qPD8wQQ2s.jpg',
+                description: ''
+            },
+            actor: {
+                title: 'Роберт Дауни',
+                photo: 'https://pp.userapi.com/c845419/v845419088/12f759/NkzhCp7VYQ0.jpg',
+                description: ''
+            },
+            businessman: {
+                title: 'Павел Дуров',
+                photo: 'https://pp.userapi.com/c845419/v845419088/12f761/6MBCmStOWhA.jpg',
+                description: ''
+            },
+            chief: {
+                title: 'Рамзи Гордон',
+                photo: 'https://pp.userapi.com/c845419/v845419545/12de5b/ynj_cho17b8.jpg',
+                description: ''
+            },
+        };
+
+        this.courses = {
+            dev: [
+                {
+                    name: 'javascript',
+                    title: 'Javascript'
+                },
+                {
+                    name: 'unity',
+                    title: 'Unity'
+                }
+            ],
+            design: [
+                {
+                    name: 'web-design',
+                    title: 'Web Design'
+                }
+            ],
+            languages: [
+                {
+                    name: 'english',
+                    title: 'Английский'
+                }
+            ],
+            ege: [
+                {
+                    name: 'ege',
+                    title: 'ЕГЭ'
+                }
+            ],
+        };
     }
 
     componentWillMount() {
