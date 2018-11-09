@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import * as UI from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import {connect} from 'react-redux';
-import {goBack} from 'react-router-redux';
-import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
-import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Footer from './Footer';
 
 class CoursesPanel extends Component {
 
@@ -16,9 +12,7 @@ class CoursesPanel extends Component {
     }
 
     render() {
-        const osname = UI.platform();
         const numbers = this.props.courses;
-        const owner = this.props.owner;
         const self = this;
         const listItems = numbers.map((course) =>
             <UI.Cell
@@ -37,11 +31,6 @@ class CoursesPanel extends Component {
     }
 
     onClick() {
-        /*this.owner.setState({
-            activePanel: 'coursePanel',
-            courseTitle: course.title
-        })*/
-        //alert('Курс пока недоступен');
         alert('Курс пока недоступен. Выберите Английский язык из раздела Курсы для вас для просмотра демо');
     }
 }
