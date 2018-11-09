@@ -7,6 +7,9 @@ import * as vkSelectors from '../store/vk/reducer';
 import * as vkActions from '../store/vk/actions';
 import AboutPanel from './AboutPanel';
 import MainPanel from './MainPanel';
+import CoursesPanel from './CoursesPanel';
+import TestPanel from './TestPanel';
+import InteractivePanel from './InteractivePanel';
 import Icon24Notification from '@vkontakte/icons/dist/24/notification';
 import Icon24NotificationDisable from '@vkontakte/icons/dist/24/notification_disable';
 import Icon24User from '@vkontakte/icons/dist/24/user';
@@ -527,26 +530,80 @@ class App extends Component {
     render() {
         const osname = UI.platform();
 
-        let activePanel = this.props.pageId === 'about' ? 'aboutPanel' : 'mainPanel';
+        //let activePanel = this.props.pageId === 'about' ? 'aboutPanel' : 'mainPanel';
 
-        return (
+        /*return (
             <UI.ConfigProvider insets={this.props.insets} isWebView={isWebView}>
                 <UI.Root activeView="mainView">
-                    <UI.Group title="Специально для вас">
-                        <UI.Gallery
-                            slideWidth="90%"
-                            style={{height: 150}}
-                            bullets="dark"
+                    <UI.View id="mainView" activePanel={activePanel}>
+                        <MainPanel id="mainPanel" accessToken={this.props.accessToken}/>
+                        <AboutPanel id="aboutPanel"/>
+                    </UI.View>
+                </UI.Root>
+            </UI.ConfigProvider>
+        );*/
+        return (
+            <UI.Root activeView={this.state.activeView}>
+                <UI.View id="main" activePanel={this.state.activePanel}>
+                    <UI.Panel id="testPanel">
+                        <UI.PanelHeader
                         >
-                            <div style={{height: 150, backgroundColor: UI.colors.white}}
-                                 onClick={() => this.setState({
-                                     activePanel: 'coursePanel',
-                                     courseTitle: 'Javascript'
-                                 })}
+                            Тест
+                        </UI.PanelHeader>
+
+                        <TestPanel test={this.test} celebrities={this.celebrities} owner={this}/>
+
+                    </UI.Panel>
+
+                    <UI.Panel id="panel1">
+                        <UI.PanelHeader
+                        >
+                            НауЧили
+                        </UI.PanelHeader>
+
+
+                        {/*<UI.Group title="Специально для вас">
+                            <UI.Gallery
+                                slideWidth="90%"
+                                style={{height: 150}}
+                                bullets="dark"
                             >
-                                <img src="https://pp.userapi.com/c850332/v850332190/62a16/avSgVpltUBw.jpg"
-                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
-                            </div>
+                                <div style={{height: 150, backgroundColor: UI.colors.white}}
+                                     onClick={() => this.setState({
+                                         activePanel: 'coursePanel',
+                                         courseTitle: 'Javascript'
+                                     })}
+                                >
+                                    <img src="https://pp.userapi.com/c850332/v850332190/62a16/avSgVpltUBw.jpg"
+                                         style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                                </div>
+                                <div style={{height: 150, backgroundColor: UI.colors.green}}
+                                     onClick={() => this.setState({
+                                         activePanel: 'coursePanel',
+                                         courseTitle: 'English'
+                                     })}
+                                >
+                                    <img src="https://pp.userapi.com/c850332/v850332190/62a1e/OEmbbEsgAEc.jpg"
+                                         style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                                </div>
+                                <div style={{height: 150, backgroundColor: UI.colors.blue_300}}
+                                     onClick={() => this.setState({
+                                         activePanel: 'coursePanel',
+                                         courseTitle: 'VK API'
+                                     })}
+                                >
+                                    <img src="https://pp.userapi.com/c850332/v850332190/62a26/CUDmKJ15G7U.jpg"
+                                         style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                                </div>
+                            </UI.Gallery>
+                        </UI.Group>*/}
+
+                        <UI.Group title="">
+                            <UI.Div>Специально для вас была создана подборка курсов, которая поможет развить ваши
+                                сильные стороны и усилить слабые.</UI.Div>
+                        </UI.Group>
+                        <UI.Group title="Курсы для вас">
+
                             <div style={{height: 150, backgroundColor: UI.colors.green}}
                                  onClick={() => this.setState({
                                      activePanel: 'coursePanel',
@@ -556,64 +613,153 @@ class App extends Component {
                                 <img src="https://pp.userapi.com/c850332/v850332190/62a1e/OEmbbEsgAEc.jpg"
                                      style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
                             </div>
-                            <div style={{height: 150, backgroundColor: UI.colors.blue_300}}
-                                 onClick={() => this.setState({
-                                     activePanel: 'coursePanel',
-                                     courseTitle: 'VK API'
-                                 })}
+                            <br/>
+
+                            <div style={{height: 150, backgroundColor: UI.colors.white}}
+                                 onClick={() => alert('Для демо, выберите курс английского языка')}
                             >
-                                <img src="https://pp.userapi.com/c850332/v850332190/62a26/CUDmKJ15G7U.jpg"
+                                <img src="https://pp.userapi.com/c847124/v847124010/1293dd/xq3Qa36zBU4.jpg"
                                      style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
                             </div>
-                        </UI.Gallery>
-                    </UI.Group>
-
-
-
-                    <UI.View id="mainView" activePanel={activePanel}>
-                        <MainPanel id="mainPanel" accessToken={this.props.accessToken}/>
-                        <AboutPanel id="aboutPanel"/>
-
-                        <UI.Panel id="panel3">
-                            <UI.PanelHeader
-                                left={<UI.HeaderButton
-                                    onClick={() => this.setState({activePanel: 'coursesPanel'})}>{osname === UI.IOS ?
-                                    <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
-                                addon={<UI.HeaderButton
-                                    onClick={() => this.setState({activePanel: 'coursesPanel'})}>Назад</UI.HeaderButton>}
-                                right={[
-                                    <UI.HeaderButton key="add" onClick={() => {
-                                    }}><Icon24Add/></UI.HeaderButton>,
-                                    <UI.HeaderButton key="more" onClick={() => {
-                                    }}><Icon24MoreVertical/></UI.HeaderButton>
-                                ]}
+                            <br/>
+                            <div style={{height: 150, backgroundColor: UI.colors.blue_300}}
+                                 onClick={() => alert('Для демо, выберите курс английского языка')}
                             >
-                                Две иконки
-                            </UI.PanelHeader>
-                            <UI.Group>
-                                <UI.CellButton onClick={() => this.setState({activeView: 'modal'})}>
-                                    Модальное окно
-                                </UI.CellButton>
-                            </UI.Group>
-                        </UI.Panel>
-                    </UI.View>
+                                <img src="https://pp.userapi.com/c847124/v847124010/1293f1/i1FCcWH9POo.jpg"
+                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                            </div>
 
-                    <UI.View id="modal" header activePanel="modal-panel">
-                        <UI.Panel id="modal-panel">
-                            <UI.PanelHeader
-                                left={<UI.HeaderButton
-                                    onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Отмена' :
-                                    <Icon24Cancel/>}</UI.HeaderButton>}
-                                right={<UI.HeaderButton disabled primary
-                                                        onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Готово' :
-                                    <Icon24Done/>}</UI.HeaderButton>}
-                            >
+                        </UI.Group>
+
+                        {/*<UI.Div>
+                            <UI.Button level="outline" before={<Icon16Add/>}>Добавить курс</UI.Button>
+                        </UI.Div>*/}
+
+                        <UI.Group title="Все курсы"
+                                  description="Необходимые курсы расположены в нужной категории">
+                            <UI.List>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d38b/ie6-D2GHzUA.jpg"/>
+                                    }
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'Программирование',
+                                        currentCategory: this.courses.dev
+                                    })}
+                                    description="">Программирование</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3ab/l20KyiPxNQE.jpg"/>}
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'Дизайн и верстка',
+                                        currentCategory: this.courses.design
+
+                                    })}
+                                    description="">Дизайн и верстка</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3b2/r5fp5o__uAg.jpg"/>}
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'Языки',
+                                        currentCategory: this.courses.languages
+
+                                    })}
+                                    description="">Языки</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3b9/MeCPTSa6jvo.jpg"/>}
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'ЕГЭ и ОГЭ',
+                                        currentCategory: this.courses.ege
+
+                                    })}
+                                    description="Школьная программа">ЕГЭ и ОГЭ</UI.Cell>
+                            </UI.List>
+                        </UI.Group>
+                    </UI.Panel>
+
+                    <UI.Panel id="coursesPanel">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>{osname === UI.IOS ?
+                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                            addon={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>Назад</UI.HeaderButton>}
+                            right={<UI.HeaderButton onClick={() => {
+                            }}><Icon24Story/></UI.HeaderButton>}
+                        >
+                            {this.state.categoryTitle}
+                        </UI.PanelHeader>
+                        <CoursesPanel courses={this.state.currentCategory} owner={this}/>
+                    </UI.Panel>
+
+                    <UI.Panel id="coursePanel">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>{osname === UI.IOS ?
+                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                            addon={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>Назад</UI.HeaderButton>}
+                            right={<UI.HeaderButton onClick={() => {
+                            }}><Icon24Story/></UI.HeaderButton>}
+                        >
+                            {this.state.courseTitle}
+                        </UI.PanelHeader>
+                        <UI.Group>
+                            {/*<UI.CellButton onClick={() => this.setState({activePanel: 'panel3'})}>
+                                Несколько иконок
+                            </UI.CellButton>*/}
+                            <InteractivePanel test={this.interactive.english} owner={this}/>
+
+                        </UI.Group>
+                    </UI.Panel>
+
+                    <UI.Panel id="panel3">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'coursesPanel'})}>{osname === UI.IOS ?
+                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                            addon={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'coursesPanel'})}>Назад</UI.HeaderButton>}
+                            right={[
+                                <UI.HeaderButton key="add" onClick={() => {
+                                }}><Icon24Add/></UI.HeaderButton>,
+                                <UI.HeaderButton key="more" onClick={() => {
+                                }}><Icon24MoreVertical/></UI.HeaderButton>
+                            ]}
+                        >
+                            Две иконки
+                        </UI.PanelHeader>
+                        <UI.Group>
+                            <UI.CellButton onClick={() => this.setState({activeView: 'modal'})}>
                                 Модальное окно
-                            </UI.PanelHeader>
-                        </UI.Panel>
-                    </UI.View>
-                </UI.Root>
-            </UI.ConfigProvider>
+                            </UI.CellButton>
+                        </UI.Group>
+                    </UI.Panel>
+                </UI.View>
+                <UI.View id="modal" header activePanel="modal-panel">
+                    <UI.Panel id="modal-panel">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Отмена' :
+                                <Icon24Cancel/>}</UI.HeaderButton>}
+                            right={<UI.HeaderButton disabled primary
+                                                    onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Готово' :
+                                <Icon24Done/>}</UI.HeaderButton>}
+                        >
+                            Модальное окно
+                        </UI.PanelHeader>
+                    </UI.Panel>
+                </UI.View>
+            </UI.Root>
         );
     }
 }
