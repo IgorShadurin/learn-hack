@@ -7,6 +7,26 @@ import * as vkSelectors from '../store/vk/reducer';
 import * as vkActions from '../store/vk/actions';
 import AboutPanel from './AboutPanel';
 import MainPanel from './MainPanel';
+import Icon24Notification from '@vkontakte/icons/dist/24/notification';
+import Icon24NotificationDisable from '@vkontakte/icons/dist/24/notification_disable';
+import Icon24User from '@vkontakte/icons/dist/24/user';
+import Icon16Like from '@vkontakte/icons/dist/16/like';
+import Icon16Add from '@vkontakte/icons/dist/16/add';
+import Icon28User from '@vkontakte/icons/dist/28/user';
+import Icon24Story from '@vkontakte/icons/dist/24/story';
+import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
+import Icon24Add from '@vkontakte/icons/dist/24/add';
+import Icon24Back from '@vkontakte/icons/dist/24/back';
+import Icon24MoreVertical from '@vkontakte/icons/dist/24/more_vertical';
+import Icon24Done from '@vkontakte/icons/dist/24/done';
+import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
+import Icon24MoreHorizontal from '@vkontakte/icons/dist/24/more_horizontal';
+import logo from '../logo.svg';
+import CurrencyRateDashboard from './CurrencyRateDashboard';
+import CurrencyConverter from './CurrencyConverter';
+import Footer from './Footer';
+import Logger from './Logger';
+import {push} from 'react-router-redux';
 
 class App extends Component {
 
@@ -505,6 +525,8 @@ class App extends Component {
     }
 
     render() {
+        const osname = UI.platform();
+
         let activePanel = this.props.pageId === 'about' ? 'aboutPanel' : 'mainPanel';
 
         return (
@@ -545,6 +567,8 @@ class App extends Component {
                             </div>
                         </UI.Gallery>
                     </UI.Group>
+
+
 
                     <UI.View id="mainView" activePanel={activePanel}>
                         <MainPanel id="mainPanel" accessToken={this.props.accessToken}/>
