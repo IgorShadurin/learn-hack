@@ -7,8 +7,11 @@ import CoursesPanel from './CoursesPanel';
 import TestPanel from './TestPanel';
 import InteractivePanel from './InteractivePanel';
 import Icon24Story from '@vkontakte/icons/dist/24/story';
+import Icon24Done from '@vkontakte/icons/dist/24/done';
+import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
+import Icon16Add from '@vkontakte/icons/dist/16/add';
 
 class App extends Component {
 
@@ -17,13 +20,14 @@ class App extends Component {
 
         this.state = {
             //activePanel: 'coursePanel',
-            //activePanel: 'testPanel',
-            activePanel: 'panel1',
+            activePanel: 'testPanel',
+            //activePanel: 'panel1',
             activeView: 'main',
             categoryTitle: '---',
             courseTitle: '---',
             currentCategory: [],
-            currentInteractive: null
+            currentInteractive: null,
+            addCourseTitle: ''
         };
 
         this.interactive = {
@@ -380,15 +384,91 @@ class App extends Component {
         };
 
         this.courses = {
-            dev: [
+            art: [
                 {
-                    name: 'javascript',
-                    title: 'Javascript'
+                    id: 1,
+                    youtubeId: "rOww7oaJkCo"
                 },
                 {
-                    name: 'unity',
-                    title: 'Unity'
-                }
+                    id: 2,
+                    youtubeId: "QRc_BNcSHWs"
+                },
+                {
+                    id: 3,
+                    youtubeId: "ak3m0XVVB_c"
+                },
+                {
+                    id: 4,
+                    youtubeId: "zzoPfguwhtw"
+                },
+            ],
+            dev: [
+                {
+                    id: 1,
+                    youtubeId: "DCFRrjVGoY0"
+                },
+                {
+                    id: 2,
+                    youtubeId: "V58rHMUVmDU"
+                },
+                {
+                    id: 3,
+                    youtubeId: "QBWWplFkdzw"
+                },
+                {
+                    id: 4,
+                    youtubeId: "xYFfQijC0ZU"
+                },
+            ],
+            science: [
+                {
+                    id: 1,
+                    youtubeId: "kBOT2UBG30I"
+                },
+                {
+                    id: 2,
+                    youtubeId: "8Akj6DECbcc"
+                },
+                {
+                    id: 3,
+                    youtubeId: "6Y19QgS5V5E"
+                },
+                {
+                    id: 4,
+                    youtubeId: "SpNUCA3_0T8"
+                },
+            ],
+            personal: [
+                {
+                    id: 1,
+                    youtubeId: "IBLfc7IjGtM"
+                },
+                {
+                    id: 2,
+                    youtubeId: "3_X5merXYXw"
+                },
+                {
+                    id: 3,
+                    youtubeId: "5MuKLbI90Uk"
+                },
+                {
+                    id: 4,
+                    youtubeId: "IvSajwI5KSg"
+                },
+            ],
+            business: [
+                {
+                    id: 1,
+                    youtubeId: "eUjyUdegeZQ"
+                },
+                {
+                    id: 2,
+                    youtubeId: "RqJiePkg2Rk"
+                },
+                {
+                    id: 3,
+                    youtubeId: "6Jx5jRpe9Bc"
+                },
             ],
             design: [
                 {
@@ -398,9 +478,21 @@ class App extends Component {
             ],
             languages: [
                 {
-                    name: 'english',
-                    title: 'Английский'
-                }
+                    id: 1,
+                    youtubeId: "JS55kpu66Vs"
+                },
+                {
+                    id: 2,
+                    youtubeId: "OIenGV8b3XM"
+                },
+                {
+                    id: 3,
+                    youtubeId: "R8Db4QSQz08"
+                },
+                {
+                    id: 4,
+                    youtubeId: "h5htd9thidY"
+                },
             ],
             ege: [
                 {
@@ -660,7 +752,10 @@ class App extends Component {
                         <UI.Group title="">
                             <UI.Div>Специально для вас была создана подборка курсов, которая поможет развить ваши
                                 сильные стороны и усилить слабые.</UI.Div>
+
+
                         </UI.Group>
+
                         <UI.Group title="Курсы для вас">
 
                             <div style={{height: 150, backgroundColor: UI.colors.green}}
@@ -685,13 +780,13 @@ class App extends Component {
                                 <img src="https://pp.userapi.com/c847124/v847124010/1293dd/xq3Qa36zBU4.jpg"
                                      style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
                             </div>
-                            <br/>
+                            {/*<br/>
                             <div style={{height: 150, backgroundColor: UI.colors.blue_300}}
                                  onClick={() => alert('Для демо, выберите курс английского языка')}
                             >
                                 <img src="https://pp.userapi.com/c847124/v847124010/1293f1/i1FCcWH9POo.jpg"
                                      style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
-                            </div>
+                            </div>*/}
 
                         </UI.Group>
 
@@ -699,9 +794,7 @@ class App extends Component {
 
                             <div style={{height: 150, backgroundColor: UI.colors.green}}
                                  onClick={() => this.setState({
-                                     activePanel: 'coursePanel',
-                                     courseTitle: 'English',
-                                     currentInteractive: this.interactive.english
+                                     activePanel: 'mapPanel'
                                  })}
                             >
                                 <img src="https://pp.userapi.com/c844721/v844721446/1325e5/zCdggxlOAVs.jpg"
@@ -710,35 +803,74 @@ class App extends Component {
 
                         </UI.Group>
 
-                        {/*<UI.Div>
-                            <UI.Button level="outline" before={<Icon16Add/>}>Добавить курс</UI.Button>
-                        </UI.Div>*/}
-
                         <UI.Group title="Все курсы"
                                   description="Необходимые курсы расположены в нужной категории">
+
+                            <UI.Div>
+                                <UI.Button level="outline" before={<Icon16Add/>}
+                                           onClick={() => this.setState({
+                                               activePanel: 'addCoursePanel',
+                                               addCourseTitle: 'Добавление курса',
+                                           })}
+                                >Добавить курс</UI.Button>
+                            </UI.Div>
+
                             <UI.List>
                                 <UI.Cell
                                     before={<UI.Avatar
                                         type="image"
-                                        src="https://pp.userapi.com/c852132/v852132423/3d38b/ie6-D2GHzUA.jpg"/>
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3ab/l20KyiPxNQE.jpg"/>
                                     }
                                     onClick={() => this.setState({
                                         activePanel: 'coursesPanel',
-                                        categoryTitle: 'Программирование',
-                                        currentCategory: this.courses.dev
+                                        categoryTitle: 'Арт',
+                                        currentCategory: this.courses.art
                                     })}
-                                    description="">Программирование</UI.Cell>
+                                    description="">Арт</UI.Cell>
                                 <UI.Cell
                                     before={<UI.Avatar
                                         type="image"
-                                        src="https://pp.userapi.com/c852132/v852132423/3d3ab/l20KyiPxNQE.jpg"/>}
+                                        src="https://pp.userapi.com/c852132/v852132423/3d38b/ie6-D2GHzUA.jpg"/>}
                                     onClick={() => this.setState({
                                         activePanel: 'coursesPanel',
-                                        categoryTitle: 'Дизайн и верстка',
-                                        currentCategory: this.courses.design
+                                        categoryTitle: 'Технологии',
+                                        currentCategory: this.courses.dev
 
                                     })}
-                                    description="">Дизайн и верстка</UI.Cell>
+                                    description="">Технологии</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3b9/MeCPTSa6jvo.jpg"/>}
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'Наука',
+                                        currentCategory: this.courses.science
+
+                                    })}
+                                    description="">Наука</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c848416/v848416354/b0c6f/wCWHCx3MnGA.jpg"/>}
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'Личность',
+                                        currentCategory: this.courses.personal
+
+                                    })}
+                                    description="">Личность</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c848416/v848416354/b0c5f/tyq3Zljg69o.jpg"/>}
+                                    onClick={() => this.setState({
+                                        activePanel: 'coursesPanel',
+                                        categoryTitle: 'Бизнес',
+                                        currentCategory: this.courses.business
+
+                                    })}
+                                    description="">Бизнес</UI.Cell>
                                 <UI.Cell
                                     before={<UI.Avatar
                                         type="image"
@@ -750,17 +882,6 @@ class App extends Component {
 
                                     })}
                                     description="">Языки</UI.Cell>
-                                <UI.Cell
-                                    before={<UI.Avatar
-                                        type="image"
-                                        src="https://pp.userapi.com/c852132/v852132423/3d3b9/MeCPTSa6jvo.jpg"/>}
-                                    onClick={() => this.setState({
-                                        activePanel: 'coursesPanel',
-                                        categoryTitle: 'ЕГЭ и ОГЭ',
-                                        currentCategory: this.courses.ege
-
-                                    })}
-                                    description="Школьная программа">ЕГЭ и ОГЭ</UI.Cell>
                             </UI.List>
                         </UI.Group>
                     </UI.Panel>
@@ -780,6 +901,67 @@ class App extends Component {
                         <CoursesPanel courses={this.state.currentCategory} owner={this}/>
                     </UI.Panel>
 
+                    <UI.Panel id="addCoursePanel" theme="white">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>{osname === UI.IOS ?
+                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                            addon={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>Назад</UI.HeaderButton>}
+                            right={<UI.HeaderButton onClick={() => {
+                            }}><Icon24Story/></UI.HeaderButton>}
+                        >
+                            {this.state.addCourseTitle}
+                        </UI.PanelHeader>
+
+                        <UI.FormLayout>
+                            <UI.Input top="Ссылка"/>
+                            <UI.Select top="Категория" placeholder="Выберите категорию">
+                                <option value="art">Арт</option>
+                                <option value="dev">Технологии</option>
+                                <option value="science">Наука</option>
+                                <option value="personal">Личность</option>
+                                <option value="business">Бизнес</option>
+                                <option value="languages">Языки</option>
+                            </UI.Select>
+
+                            <UI.Select top="Уровень сложности" placeholder="Выберите уровень сложности">
+                                <option value="basic">Базовый</option>
+                                <option value="middle">Средний</option>
+                                <option value="hard">Высший</option>
+                            </UI.Select>
+
+                            <UI.Button size="xl" level="commerce"
+                                       onClick={() => this.setState({activePanel: 'linkSentModal'})}
+                            >Отправить на модерацию</UI.Button>
+                        </UI.FormLayout>
+                    </UI.Panel>
+
+                    <UI.Panel id="linkSentModal" theme="white">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>{osname === UI.IOS ?
+                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                            addon={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>Назад</UI.HeaderButton>}
+                            right={<UI.HeaderButton onClick={() => {
+                            }}><Icon24Story/></UI.HeaderButton>}
+                        >
+                            Модерация
+                        </UI.PanelHeader>
+
+                        <UI.Group>
+                            <UI.Div style={{textAlign: 'center'}}>Запись отправлена на модерацию</UI.Div>
+
+                            <UI.Div style={{textAlign: 'center'}}>
+                                <img src="https://pp.userapi.com/c847124/v847124938/128f41/sy2aaBbiMg0.jpg"
+                                     style={{width: '30%', height: '30%'}}/>
+                            </UI.Div>
+                        </UI.Group>
+
+                    </UI.Panel>
+
+
                     <UI.Panel id="coursePanel">
                         <UI.PanelHeader
                             left={<UI.HeaderButton
@@ -794,6 +976,130 @@ class App extends Component {
                         </UI.PanelHeader>
                         <UI.Group>
                             <InteractivePanel test={this.state.currentInteractive} owner={this}/>
+
+                        </UI.Group>
+                    </UI.Panel>
+
+                    <UI.Panel id="mapPanel">
+                        <UI.PanelHeader
+                            left={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>{osname === UI.IOS ?
+                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
+                            addon={<UI.HeaderButton
+                                onClick={() => this.setState({activePanel: 'panel1'})}>Назад</UI.HeaderButton>}
+                            right={<UI.HeaderButton onClick={() => {
+                            }}><Icon24Story/></UI.HeaderButton>}
+                        >
+                            Мероприятия рядом
+                        </UI.PanelHeader>
+                        <UI.Group>
+
+                            <div style={{height: 150, backgroundColor: UI.colors.green}}
+
+                            >
+                                <img src="https://pp.userapi.com/c844721/v844721446/1325e5/zCdggxlOAVs.jpg"
+                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                            </div>
+
+                            <UI.Div>
+                                <UI.Button level="outline" before={<Icon16Add/>}
+                                           onClick={() => this.setState({
+                                               activePanel: 'addCoursePanel',
+                                               addCourseTitle: 'Добавление мероприятия',
+                                           })}
+                                >Добавить мероприятие</UI.Button>
+                            </UI.Div>
+
+                            <UI.List>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/653589" target="_blank">English
+                                        Speaking Club</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/706336" target="_blank">Итальянский
+                                        разговорный клуб с носителем языка из Италии</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/718356" target="_blank">Азы рисования
+                                        простым карандашом</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/720244" target="_blank">Основы
+                                        фотографии </UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/623093" target="_blank">Аппаратный
+                                        маникюр</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/652028" target="_blank">Пользователь ПК
+                                        (углубленный)</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/625484" target="_blank">Вокал</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/701779" target="_blank">Бухгалтерский
+                                        учет</UI.Link>
+                                </UI.Cell>
+
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
+
+                                    description="">
+                                    <UI.Link href="https://spb.ucheba.ru/program/701814"
+                                             target="_blank">Дизайн</UI.Link>
+                                </UI.Cell>
+                            </UI.List>
 
                         </UI.Group>
                     </UI.Panel>

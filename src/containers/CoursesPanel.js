@@ -16,12 +16,12 @@ class CoursesPanel extends Component {
         const self = this;
         const listItems = numbers.map((course) =>
             <UI.Cell
-                key={course.name}
-                before={<UI.Avatar
-                    type="image"
-                    src="https://pp.userapi.com/c852132/v852132423/3d3c9/tI_IhafnGbE.jpg"/>}
-                onClick={() => self.onClick()}
-                description="">{course.title}</UI.Cell>
+                key={course.id}
+                description="">
+                <iframe width="100%" src={"https://www.youtube.com/embed/" + course.youtubeId} frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen></iframe>
+            </UI.Cell>
         );
         return (
             <UI.Group title="Выберите подходящий курс">

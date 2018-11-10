@@ -60,6 +60,12 @@ class TestPanel extends Component {
 
                         <UI.Group title="">
                             <UI.Div>
+                                <img src="https://pp.userapi.com/c850424/v850424981/3eca6/Lm2y_lFG0uk.jpg" style={{width:'100%'}} alt=""/>
+                            </UI.Div>
+                        </UI.Group>
+
+                        <UI.Group title="">
+                            <UI.Div>
                                 <UI.Button
                                     onClick={this.onStartTest}
                                     size="xl" stretched level="commerce">Начать</UI.Button>
