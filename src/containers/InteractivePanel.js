@@ -48,22 +48,7 @@ class InteractivePanel extends Component {
             if (currentQuestionId === 0) {
                 return (
                     <UI.Div>
-                        <UI.Group title="">
-                            <UI.Div>
-                                <h3>Узнайте кем из знаменитостей вы могли бы быть</h3>
-                                <p>Для этого ответьте на несколько вопросов и мы определим на кого из знаменистей вы
-                                    похожи больше всего. А так же расскажем что нужно делать, чтобы добиться таких же
-                                    результатов.</p>
-                            </UI.Div>
-                        </UI.Group>
-
-                        <UI.Group title="">
-                            <UI.Div>
-                                <UI.Button
-                                    onClick={this.onStartTest}
-                                    size="xl" stretched level="commerce">Начать</UI.Button>
-                            </UI.Div>
-                        </UI.Group>
+                        Not implemented
                     </UI.Div>
                 );
             } else {
@@ -71,20 +56,52 @@ class InteractivePanel extends Component {
                     <UI.Div>
                         <UI.Group title="">
                             <UI.Div>
-                                <h3 style={{textAlign: 'center'}}>Поздравляем! Вы набрали 39 баллов</h3>
+                                <h3 style={{textAlign: 'center'}}>Поздравляем! Вы набрали баллов: {Math.floor(Math.random() * (80 - 30) + 30)}.</h3>
                             </UI.Div>
                             <UI.Div style={{textAlign: 'center'}}>
                                 <img src="https://pp.userapi.com/c847124/v847124938/128f41/sy2aaBbiMg0.jpg"
                                      style={{width: '30%', height: '30%'}}/>
                             </UI.Div>
-
                         </UI.Group>
 
                         <UI.Group title="">
-
                             <UI.Button
                                 onClick={this.onShowResult}
-                                size="xl" stretched level="commerce">Другие курсы</UI.Button>
+                                size="xl" stretched level="commerce">На главную</UI.Button>
+                        </UI.Group>
+
+                        <UI.Group title="Курсы для углубленного изучения">
+                            <UI.List>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c844721/v844721446/132659/MFiHDz5oTaQ.jpg"/>
+                                    }
+                                    onClick={this.onShowResult}
+
+                                    description="">Базовый</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c844721/v844721446/132660/Yv6EwUg6cLU.jpg"/>}
+                                    onClick={this.onShowResult}
+
+                                    description="">Начальный</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c844721/v844721446/132667/QoU2r8rQIMo.jpg"/>}
+                                    onClick={this.onShowResult}
+
+                                    description="">Средний</UI.Cell>
+                                <UI.Cell
+                                    before={<UI.Avatar
+                                        type="image"
+                                        src="https://pp.userapi.com/c844721/v844721446/13266e/iFxhwDXKPBk.jpg"/>}
+                                    onClick={this.onShowResult}
+
+                                    description="">Высший</UI.Cell>
+                            </UI.List>
                         </UI.Group>
                     </UI.Div>
                 );

@@ -7,11 +7,7 @@ import CoursesPanel from './CoursesPanel';
 import TestPanel from './TestPanel';
 import InteractivePanel from './InteractivePanel';
 import Icon24Story from '@vkontakte/icons/dist/24/story';
-import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
-import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Icon24MoreVertical from '@vkontakte/icons/dist/24/more_vertical';
-import Icon24Done from '@vkontakte/icons/dist/24/done';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 
 class App extends Component {
@@ -21,12 +17,13 @@ class App extends Component {
 
         this.state = {
             //activePanel: 'coursePanel',
-            activePanel: 'testPanel',
-            //activePanel: 'panel1',
+            //activePanel: 'testPanel',
+            activePanel: 'panel1',
             activeView: 'main',
             categoryTitle: '---',
             courseTitle: '---',
-            currentCategory: []
+            currentCategory: [],
+            currentInteractive: null
         };
 
         this.interactive = {
@@ -209,6 +206,134 @@ class App extends Component {
                             {
                                 id: 3,
                                 text: 'Till tomorrow.'
+                            },
+                        ]
+                    },
+                ]
+            },
+            mnemonic: {
+                questions: [
+                    {
+                        id: 1,
+                        text: "Обычный человек может запомнить в среднем 7 слов из 20 за 1.5 минуты. Сейчас мы узнаем, есть ли у вас способности к запоминанию. Вы готовы?",
+                        answers: [
+                            {
+                                id: 1,
+                                text: 'Да!'
+                            },
+                        ]
+                    },
+                    {
+                        id: 2,
+                        text: "Попробуйте запомнить максимальное количество слов из этого списка за 1.5 минуты: слон, стакан, ведро, стул, лошадь, ручка, мозг, тарелка, клей, глаза, огонь, свеча, морж, лопата, пчела, девушка, машина, дерево, лужа, мышь",
+                        answers: [
+                            {
+                                id: 1,
+                                text: 'Готово!'
+                            },
+                        ]
+                    },
+                    {
+                        id: 3,
+                        text: "Теперь начнем проверку ваших способностей. Найдите слово, которого не было в списке",
+                        answers: [
+                            {
+                                id: 1,
+                                text: 'Огонь'
+                            },
+                            {
+                                id: 2,
+                                text: 'Стакан'
+                            },
+                            {
+                                id: 3,
+                                text: 'Стол'
+                            },
+                            {
+                                id: 4,
+                                text: 'Слон'
+                            },
+                            {
+                                id: 5,
+                                text: 'Ручка'
+                            },
+                        ]
+                    },
+                    {
+                        id: 4,
+                        text: "Сейчас тут есть несколько слов, которых не было в списке. Можете найти и выбрать любое",
+                        answers: [
+                            {
+                                id: 1,
+                                text: 'Ведро'
+                            },
+                            {
+                                id: 2,
+                                text: 'Корзина'
+                            },
+                            {
+                                id: 3,
+                                text: 'Конь'
+                            },
+                            {
+                                id: 4,
+                                text: 'Лошадь'
+                            },
+                            {
+                                id: 5,
+                                text: 'Карандаш'
+                            },
+                        ]
+                    },
+                    {
+                        id: 5,
+                        text: "Найдите самое последнее слово из списка",
+                        answers: [
+                            {
+                                id: 1,
+                                text: 'Девушка'
+                            },
+                            {
+                                id: 2,
+                                text: 'Лужа'
+                            },
+                            {
+                                id: 3,
+                                text: 'Мышь'
+                            },
+                            {
+                                id: 4,
+                                text: 'Тарелка'
+                            },
+                            {
+                                id: 5,
+                                text: 'Глаза'
+                            },
+                        ]
+                    },
+                    {
+                        id: 6,
+                        text: "Найдите 10-е слово из списка",
+                        answers: [
+                            {
+                                id: 1,
+                                text: 'Лужа'
+                            },
+                            {
+                                id: 2,
+                                text: 'Мышь'
+                            },
+                            {
+                                id: 3,
+                                text: 'Девушка'
+                            },
+                            {
+                                id: 4,
+                                text: 'Глаза'
+                            },
+                            {
+                                id: 5,
+                                text: 'Тарелка'
                             },
                         ]
                     },
@@ -529,7 +654,7 @@ class App extends Component {
                     <UI.Panel id="panel1">
                         <UI.PanelHeader
                         >
-                            НауЧили
+                            НауЧили 🌶
                         </UI.PanelHeader>
 
                         <UI.Group title="">
@@ -541,7 +666,8 @@ class App extends Component {
                             <div style={{height: 150, backgroundColor: UI.colors.green}}
                                  onClick={() => this.setState({
                                      activePanel: 'coursePanel',
-                                     courseTitle: 'English'
+                                     courseTitle: 'English',
+                                     currentInteractive: this.interactive.english
                                  })}
                             >
                                 <img src="https://pp.userapi.com/c850332/v850332190/62a1e/OEmbbEsgAEc.jpg"
@@ -550,7 +676,11 @@ class App extends Component {
                             <br/>
 
                             <div style={{height: 150, backgroundColor: UI.colors.white}}
-                                 onClick={() => alert('Для демо, выберите курс английского языка')}
+                                 onClick={() => this.setState({
+                                     activePanel: 'coursePanel',
+                                     courseTitle: 'Мнемотехника',
+                                     currentInteractive: this.interactive.mnemonic
+                                 })}
                             >
                                 <img src="https://pp.userapi.com/c847124/v847124010/1293dd/xq3Qa36zBU4.jpg"
                                      style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
@@ -560,6 +690,21 @@ class App extends Component {
                                  onClick={() => alert('Для демо, выберите курс английского языка')}
                             >
                                 <img src="https://pp.userapi.com/c847124/v847124010/1293f1/i1FCcWH9POo.jpg"
+                                     style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
+                            </div>
+
+                        </UI.Group>
+
+                        <UI.Group title="Мероприятия рядом">
+
+                            <div style={{height: 150, backgroundColor: UI.colors.green}}
+                                 onClick={() => this.setState({
+                                     activePanel: 'coursePanel',
+                                     courseTitle: 'English',
+                                     currentInteractive: this.interactive.english
+                                 })}
+                            >
+                                <img src="https://pp.userapi.com/c844721/v844721446/1325e5/zCdggxlOAVs.jpg"
                                      style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
                             </div>
 
@@ -648,7 +793,7 @@ class App extends Component {
                             {this.state.courseTitle}
                         </UI.PanelHeader>
                         <UI.Group>
-                            <InteractivePanel test={this.interactive.english} owner={this}/>
+                            <InteractivePanel test={this.state.currentInteractive} owner={this}/>
 
                         </UI.Group>
                     </UI.Panel>
