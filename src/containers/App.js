@@ -2,20 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as UI from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-import {isWebView} from '@vkontakte/vkui/src/lib/webview';
-import * as vkSelectors from '../store/vk/reducer';
 import * as vkActions from '../store/vk/actions';
-import AboutPanel from './AboutPanel';
-import MainPanel from './MainPanel';
 import CoursesPanel from './CoursesPanel';
 import TestPanel from './TestPanel';
 import InteractivePanel from './InteractivePanel';
-import Icon24Notification from '@vkontakte/icons/dist/24/notification';
-import Icon24NotificationDisable from '@vkontakte/icons/dist/24/notification_disable';
-import Icon24User from '@vkontakte/icons/dist/24/user';
-import Icon16Like from '@vkontakte/icons/dist/16/like';
-import Icon16Add from '@vkontakte/icons/dist/16/add';
-import Icon28User from '@vkontakte/icons/dist/28/user';
 import Icon24Story from '@vkontakte/icons/dist/24/story';
 import Icon24Cancel from '@vkontakte/icons/dist/24/cancel';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
@@ -23,13 +13,6 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24MoreVertical from '@vkontakte/icons/dist/24/more_vertical';
 import Icon24Done from '@vkontakte/icons/dist/24/done';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
-import Icon24MoreHorizontal from '@vkontakte/icons/dist/24/more_horizontal';
-import logo from '../logo.svg';
-import CurrencyRateDashboard from './CurrencyRateDashboard';
-import CurrencyConverter from './CurrencyConverter';
-import Footer from './Footer';
-import Logger from './Logger';
-import {push} from 'react-router-redux';
 
 class App extends Component {
 
@@ -530,18 +513,6 @@ class App extends Component {
     render() {
         const osname = UI.platform();
 
-        //let activePanel = this.props.pageId === 'about' ? 'aboutPanel' : 'mainPanel';
-
-        /*return (
-            <UI.ConfigProvider insets={this.props.insets} isWebView={isWebView}>
-                <UI.Root activeView="mainView">
-                    <UI.View id="mainView" activePanel={activePanel}>
-                        <MainPanel id="mainPanel" accessToken={this.props.accessToken}/>
-                        <AboutPanel id="aboutPanel"/>
-                    </UI.View>
-                </UI.Root>
-            </UI.ConfigProvider>
-        );*/
         return (
             <UI.Root activeView={this.state.activeView}>
                 <UI.View id="main" activePanel={this.state.activePanel}>
@@ -560,43 +531,6 @@ class App extends Component {
                         >
                             НауЧили
                         </UI.PanelHeader>
-
-
-                        {/*<UI.Group title="Специально для вас">
-                            <UI.Gallery
-                                slideWidth="90%"
-                                style={{height: 150}}
-                                bullets="dark"
-                            >
-                                <div style={{height: 150, backgroundColor: UI.colors.white}}
-                                     onClick={() => this.setState({
-                                         activePanel: 'coursePanel',
-                                         courseTitle: 'Javascript'
-                                     })}
-                                >
-                                    <img src="https://pp.userapi.com/c850332/v850332190/62a16/avSgVpltUBw.jpg"
-                                         style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
-                                </div>
-                                <div style={{height: 150, backgroundColor: UI.colors.green}}
-                                     onClick={() => this.setState({
-                                         activePanel: 'coursePanel',
-                                         courseTitle: 'English'
-                                     })}
-                                >
-                                    <img src="https://pp.userapi.com/c850332/v850332190/62a1e/OEmbbEsgAEc.jpg"
-                                         style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
-                                </div>
-                                <div style={{height: 150, backgroundColor: UI.colors.blue_300}}
-                                     onClick={() => this.setState({
-                                         activePanel: 'coursePanel',
-                                         courseTitle: 'VK API'
-                                     })}
-                                >
-                                    <img src="https://pp.userapi.com/c850332/v850332190/62a26/CUDmKJ15G7U.jpg"
-                                         style={{width: '100%', height: '100%', objectFit: 'cover'}} alt=""/>
-                                </div>
-                            </UI.Gallery>
-                        </UI.Group>*/}
 
                         <UI.Group title="">
                             <UI.Div>Специально для вас была создана подборка курсов, которая поможет развить ваши
@@ -714,51 +648,12 @@ class App extends Component {
                             {this.state.courseTitle}
                         </UI.PanelHeader>
                         <UI.Group>
-                            {/*<UI.CellButton onClick={() => this.setState({activePanel: 'panel3'})}>
-                                Несколько иконок
-                            </UI.CellButton>*/}
                             <InteractivePanel test={this.interactive.english} owner={this}/>
 
                         </UI.Group>
                     </UI.Panel>
+                </UI.View>
 
-                    <UI.Panel id="panel3">
-                        <UI.PanelHeader
-                            left={<UI.HeaderButton
-                                onClick={() => this.setState({activePanel: 'coursesPanel'})}>{osname === UI.IOS ?
-                                <Icon28ChevronBack/> : <Icon24Back/>}</UI.HeaderButton>}
-                            addon={<UI.HeaderButton
-                                onClick={() => this.setState({activePanel: 'coursesPanel'})}>Назад</UI.HeaderButton>}
-                            right={[
-                                <UI.HeaderButton key="add" onClick={() => {
-                                }}><Icon24Add/></UI.HeaderButton>,
-                                <UI.HeaderButton key="more" onClick={() => {
-                                }}><Icon24MoreVertical/></UI.HeaderButton>
-                            ]}
-                        >
-                            Две иконки
-                        </UI.PanelHeader>
-                        <UI.Group>
-                            <UI.CellButton onClick={() => this.setState({activeView: 'modal'})}>
-                                Модальное окно
-                            </UI.CellButton>
-                        </UI.Group>
-                    </UI.Panel>
-                </UI.View>
-                <UI.View id="modal" header activePanel="modal-panel">
-                    <UI.Panel id="modal-panel">
-                        <UI.PanelHeader
-                            left={<UI.HeaderButton
-                                onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Отмена' :
-                                <Icon24Cancel/>}</UI.HeaderButton>}
-                            right={<UI.HeaderButton disabled primary
-                                                    onClick={() => this.setState({activeView: 'main'})}>{osname === UI.IOS ? 'Готово' :
-                                <Icon24Done/>}</UI.HeaderButton>}
-                        >
-                            Модальное окно
-                        </UI.PanelHeader>
-                    </UI.Panel>
-                </UI.View>
             </UI.Root>
         );
     }
@@ -766,8 +661,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        accessToken: vkSelectors.getAccessToken(state),
-        insets: vkSelectors.getInsets(state),
+        //accessToken: vkSelectors.getAccessToken(state),
+        //insets: vkSelectors.getInsets(state),
     };
 }
 
