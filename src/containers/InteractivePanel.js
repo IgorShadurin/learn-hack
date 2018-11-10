@@ -57,6 +57,7 @@ class InteractivePanel extends Component {
                         <UI.Group title="">
                             <UI.Div>
                                 <h3 style={{textAlign: 'center'}}>Поздравляем! Вы набрали баллов: {Math.floor(Math.random() * (80 - 30) + 30)}.</h3>
+                                <p style={{textAlign: 'center'}}>Для укрепления знаний рекомендуем пройти курсы среднего уровня</p>
                             </UI.Div>
                             <UI.Div style={{textAlign: 'center'}}>
                                 <img src="https://pp.userapi.com/c847124/v847124938/128f41/sy2aaBbiMg0.jpg"

@@ -21,6 +21,9 @@ class CoursesPanel extends Component {
                 <iframe width="100%" src={"https://www.youtube.com/embed/" + course.youtubeId} frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen></iframe>
+
+                <br/>
+                <img src="https://pp.userapi.com/c850424/v850424255/42dc9/-iBz9Bf5ozc.jpg" alt=""/>
             </UI.Cell>
         );
         return (

@@ -1005,7 +1005,7 @@ class App extends Component {
                                 <UI.Button level="outline" before={<Icon16Add/>}
                                            onClick={() => this.setState({
                                                activePanel: 'addCoursePanel',
-                                               addCourseTitle: 'Добавление мероприятия',
+                                               addCourseTitle: 'Добавление',
                                            })}
                                 >Добавить мероприятие</UI.Button>
                             </UI.Div>
